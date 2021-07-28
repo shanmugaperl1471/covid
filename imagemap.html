@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MINI PROJECT</title>
+    <h1>Disease Reporting System</h1>
+    <hr>
+    <marquee>COVID-19 IN INDIA</marquee>
+    <hr>
+    <link href="index.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
+</head>
+<body>
+      <div class="container-1">
+            <div class="box1">
+      <img src = "https://www.mapsofindia.com/images2/india-map.jpg" alt = "India" usemap = "#picture" />
+      <map name = "picture">
+            <area href = "Andaman_and_Nicobar_Islands.html" shape = "circle"
+                  coords = "595,660, 15" alt = "Andaman and Nicobar Islands" />
+            <area href = "AndhraPradesh.html" shape = "circle"
+                  coords = "254,583, 15" alt = "Andhra Pradesh" />    
+            <area href = "Arunachal_Pradesh.html" shape = "circle"
+                  coords = "625,229, 10" alt = "Arunachal Pradesh" />    
+            <area href = "Assam.html" shape = "circle"
+                  coords = "589,283,10" alt = "Assam" />    
+            <area href = "Bihar.html" shape = "circle"
+                  coords = "420,305,10" alt = "Bihar" /> 
+            <area href = "Chandigarh.html" shape = "circle"
+                  coords = "184,186,10" alt = "Chhattisgarh" /> 
+            <area href = "Chhattisgarh.html" shape = "circle"
+                  coords = "326,425,10" alt = "Chhattisgarh" />       
+            <area href = "Dadra and Nagar Haveli and Daman and Diu.html" shape = "circle"
+                  coords = "90,457,10" alt = "Chhattisgarh" /> 
+            <area href = "Delhi.html" shape = "circle"
+                  coords = "224,231,10" alt = "Delhi" />
+            <area href = "Goa.html" shape = "circle"
+                  coords = "138,570,10" alt = "Goa" />
+            <area href = "Gujarat.html" shape = "circle"
+                  coords = "92,365,20" alt = "Gujarat" /> 
+            <area href = "Haryana.html" shape = "circle"
+                  coords = "200,213,10" alt = "Haryana" />   
+            <area href = "Himachal_Pradesh.html" shape = "circle"
+                  coords = "225,140,10" alt = "Himachal Pradesh" />   
+            <area href = "Jammu_and_Kashmir.html" shape = "circle"
+                  coords = "167,100,10" alt = "Jammu and Kashmir" />   
+            <area href = "Jharkhand.html" shape = "circle"
+                  coords = "403,366,10" alt = "Jharkhand" /> 
+            <area href = "Karnataka.html" shape = "circle"
+                  coords = "182,592, 15" alt = "Karnataka" />
+            <area href = "Kerala.html" shape = "circle"
+                  coords = "199,693,10" alt = "Kerala" />      
+            <area href = "Ladakh.html" shape = "circle"
+                  coords = "229,77,20" alt = "Ladakh" />
+            <area href = "Lakshadweep.html" shape = "circle"
+                  coords = "93, 690, 15" alt = "Lakshadweep" />
+            <area href = "Madhya_Pradesh.html" shape = "circle"
+                  coords = "240,378,15" alt = "Madhya_Pradesh" />
+            <area href = "Maharashtra.html" shape = "circle"
+                  coords = "180,470,15" alt = "Maharashtra" />
+            <area href = "Manipur.html" shape = "circle"
+                  coords = "613,330, 10" alt = "Manipur" />
+            <area href = "Meghalaya.html" shape = "circle"
+                  coords = "551,311, 10" alt = "Meghalaya" />
+            <area href = "Mizoram.html" shape = "circle"
+                  coords = "591,365, 15" alt = "Mizoram" />
+            <area href = "Nagaland.html" shape = "circle"
+                  coords = "630, 290, 15" alt = "Nagaland" />
+            <area href = "Odisha.html" shape = "circle"
+                  coords = "390,442, 15" alt = "Odisha" />
+            <area href = "Puducherry.html" shape = "circle"
+                  coords = "286,659, 15" alt = "Puducherry" />
+            <area href = "Punjab.html" shape = "circle"
+                  coords = "181,163, 10" alt = "Punjab" />
+            <area href = "Rajasthan.html" shape = "circle"
+                  coords = "130, 290, 20" alt = "Rajasthan" />
+            <area href = "Sikkim.html" shape = "circle"
+                  coords = "484,257, 15" alt = "Sikkim" />
+            <area href = "TamilNadu.html" shape = "circle"
+                  coords = "242,682, 20" alt = "TamilNadu" />
+            <area href = "Telangana.html" shape = "circle"
+                  coords = "260,514, 15" alt = "Telangana" />
+            <area href = "Tripura.html" shape = "circle"
+                  coords = "562,356, 15" alt = "Tripura" />
+            <area href = "Uttar_Pradesh.html" shape = "circle"
+                  coords = "295,273, 20" alt = "Uttar Pradesh" />
+            <area href = "Uttarakhand.html" shape = "circle"
+                  coords = "270,193, 20" alt = "Uttarakhand" />
+            <area href = "West_Bengal.html" shape = "circle"
+                  coords = "468,373, 15" alt = "West Bengal" />
+      </map>
+            </div>
+      <div class="container-2">      
+      <div class="box2">
+            <canvas id="chart"></canvas>
+      </div>
+      <script>
+            getData1();
+            async function getData1() {
+                const a1 = [];
+                const a2 = [];
+                const a3 = [];
+                const a4 = [];
+                const response = await fetch('https://api.covid19india.org/csv/latest/state_wise.csv');
+                const data = await response.text();
+                const rows = data.split('\n').slice(1);
+    
+                rows.forEach(ro => {
+                    const row = ro.split(',');
+                    const a = row[0];
+                    a1.push(a);
+                    const b = row[1];
+                    a2.push(b);
+                    const c = row[2];
+                    a3.push(c);    
+                    const d = row[3];
+                    a4.push(d);
+                    document.getElementById("Result1").innerHTML = "TOTAL CONFIRMED IN INDIA : "+a2[0];
+                    document.getElementById("Result2").innerHTML = "TOTAL RECOVERED IN INDIA : "+a3[0];
+                    document.getElementById("Result3").innerHTML = "TOTAL DECEASED(DEATH) IN INDIA : "+a4[0];
+                    //console.log(a,b,c,d);
+                });
+            }
+            chartIt();
+            async function chartIt() {
+                  const data = await getdata();
+                  const ctx = document.getElementById('chart').getContext('2d');
+                  const myChart = new Chart(ctx, {
+                  data: {
+                        labels: data.xlabels,
+                        datasets: [{
+                        type: 'bar',
+                        label: 'Confirmed',
+                        data: data.ylabels1,
+                        backgroundColor: '#F80505',
+                        borderColor:'#F80505',
+                        borderWidth:1
+                        },{
+                        type: 'bar',
+                        label: 'Recovered',
+                        data: data.ylabels2,
+                        backgroundColor: '#06F7F7',
+                        borderColor:'#06F7F7',
+                        borderWidth:1
+                        },{
+                        type: 'bar',
+                        label: 'Death',
+                        data: data.ylabels3,
+                        backgroundColor: '#74E871',
+                        borderColor:'#74E871',
+                        borderWidth:1
+                        }]
+                  },
+                  option:{
+                        responsive: true,
+                        maintainAspectRatio:false
+                  }
+            });
+            }
+            async function getdata() {
+            const xlabels = [];
+            const ylabels1 = [];
+            const ylabels2 = [];
+            const ylabels3 = [];
+            const response = await fetch('https://api.covid19india.org/csv/latest/case_time_series.csv');
+            const data = await response.text();
+            //console.log(data);
+            const table = data.split('\n').slice(1);
+            table.forEach(ele =>{
+                  const kratos = ele.split(',')
+                  const kra = kratos[1];
+                    xlabels.push(kra);
+                    const kra1 = kratos[2];
+                    ylabels1.push(kra1);
+                    const kra2 = kratos[4];
+                    ylabels2.push(kra2);    
+                    const kra3 = kratos[6];
+                    ylabels3.push(kra3);
+                    console.log(kra,kra1,kra2,kra3)
+            })
+            return{xlabels ,ylabels1,ylabels2,ylabels3}
+      }
+      </script>
+      <div class="box3">
+      <p id="Result1" style="color: rgb(235, 103, 15);"></p>
+      <p id="Result2" style="color: rgb(235, 234, 236);"></p>
+      <p id="Result3" style="color: rgb(14, 155, 38);"></p>
+      </div>
+      </div>
+</div>
+</body>
+</html>

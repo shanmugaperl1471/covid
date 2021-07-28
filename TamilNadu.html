@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tamil Nadu</title>
+    <link href="index.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
+</head>
+<body>
+<div style="text-align: center;"><H1>TAMIL NADU</H1></div>
+<HR>
+<b><span style="color: brown; "><marquee>Covid-19 Condition Of TAMIL NADU</marquee> </span></b></br>
+<hr>
+<div class="container-1">
+    <div class="box1">
+<div style="text-align: center;"><img src="https://www.mapsofindia.com/maps/tamilnadu/tamilnadu-index-20-map.jpg" alt="tamilnadu image" width="600px"/></div>
+</div>
+<div class="container-2">      
+    <div class="box2">
+<canvas id="chart" width="800" height="400"></canvas></div>
+<script>
+    getData();
+    async function getData() {
+        const a1 = [];
+        const a2 = [];
+        const a3 = [];
+        const a4 = [];
+        const response = await fetch('https://api.covid19india.org/csv/latest/state_wise.csv');
+        const data = await response.text();
+        const rows = data.split('\n').slice(1);
+
+        rows.forEach(ro => {
+            const row = ro.split(',');
+            const a = row[0];
+            a1.push(a);
+            const b = row[1];
+            a2.push(b);
+            const c = row[2];
+            a3.push(c);    
+            const d = row[3];
+            a4.push(d);
+            document.getElementById("Res1").innerHTML = "TOTAL CONFIRMED IN TAMIL NADU : "+a2[37];
+            document.getElementById("Res2").innerHTML = "TOTAL RECOVERED IN TAMIL NADU : "+a3[37];
+            document.getElementById("Res3").innerHTML = "TOTAL DECEASED(DEATH) IN TAMIL NADU : "+a4[37];
+            console.log(a,b,c,d);
+        });
+    }
+    chartIt();
+async function chartIt() {
+    const data = await getdata();
+    const ctx = document.getElementById('chart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        data: {
+            labels: data.xlabels,
+            datasets: [{
+                type: 'bar',
+                label: 'Confirmed',
+                data: data.ylabels1,
+                backgroundColor: '#ff6384',
+                borderColor:'#ff6384',
+                borderWidth:1
+            },{
+                type: 'bar',
+                label: 'Recovered',
+                data: data.ylabels2,
+                backgroundColor: '#ffce56',
+                borderColor:'#ffce56',
+                borderWidth:1
+            },{
+                type: 'bar',
+                label: 'Death',
+                data: data.ylabels3,
+                backgroundColor: '#36a2eb',
+                borderColor:'#36a2eb',
+                borderWidth:1
+            }]
+        }
+    });
+}
+async function getdata() {
+    const xlabels = [];
+    const ylabels1 = [];
+    const ylabels2 = [];
+    const ylabels3 = [];
+    const response = await fetch('https://api.covid19india.org/csv/latest/state_wise_daily.csv');
+    const data = await response.text();
+    //console.log(data);
+    const table = data.split('\n').slice(1);
+    for(let row = 0;row < table.length;row=row+3){
+        const cols = table[row].split(',');
+        const dat = cols[1];
+        xlabels.push(dat);
+        const temp = cols[2];
+        const a = cols[35];
+        ylabels1.push(a);
+        console.log(dat + " : " +temp+ ":" + a);
+    }
+    for(let row = 1;row < table.length;row=row+3){
+        const cols = table[row].split(',');
+        const dat = cols[1];
+        const temp = cols[2];
+        const a = cols[35];
+        ylabels2.push(a);
+        console.log(dat + " : " +temp+ ":" + a);
+    }
+    for(let row = 2;row < table.length;row=row+3){
+        const cols = table[row].split(',');
+        const dat = cols[1];
+        const temp = cols[2];
+        const a = cols[35];
+        ylabels3.push(a);
+        console.log(dat + " : " +temp+ ":" + a);
+    }
+    return{xlabels ,ylabels1,ylabels2,ylabels3}
+}
+
+</script>
+<div class="box3">
+    <p id="Res1" style="color: rgb(235, 103, 15);"></p>
+    <p id="Res2" style="color: rgb(235, 234, 236);"></p>
+    <p id="Res3" style="color: rgb(14, 155, 38);"></p>
+    </div>
+    </div>
+    </div>
+</body>
+</html>
