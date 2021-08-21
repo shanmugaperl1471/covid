@@ -100,7 +100,7 @@
                 const a2 = [];
                 const a3 = [];
                 const a4 = [];
-                const response = await fetch('https://api.covid19india.org/csv/latest/state_wise.csv');
+                const response = await fetch('state_wise.csv');
                 const data = await response.text();
                 const rows = data.split('\n').slice(1);
     
@@ -117,7 +117,7 @@
                     document.getElementById("Result1").innerHTML = "TOTAL CONFIRMED IN INDIA : "+a2[0];
                     document.getElementById("Result2").innerHTML = "TOTAL RECOVERED IN INDIA : "+a3[0];
                     document.getElementById("Result3").innerHTML = "TOTAL DECEASED(DEATH) IN INDIA : "+a4[0];
-                    //console.log(a,b,c,d);
+                    console.log(a,b,c,d);
                 });
             }
             chartIt();
@@ -161,9 +161,9 @@
             const ylabels1 = [];
             const ylabels2 = [];
             const ylabels3 = [];
-            const response = await fetch('https://api.covid19india.org/csv/latest/case_time_series.csv');
+            const response = await fetch('case_time_series.csv');
             const data = await response.text();
-            //console.log(data);
+            console.log(data);
             const table = data.split('\n').slice(1);
             table.forEach(ele =>{
                   const kratos = ele.split(',')
