@@ -4,13 +4,49 @@
     <meta charset="UTF-8">
     <title>MINI PROJECT</title>
     <h1>Disease Reporting System</h1>
-    <hr>
-    <marquee>COVID-19 IN INDIA</marquee>
-    <hr>
     <link href="index.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
 </head>
 <body>
+      <a href="https://selfregistration.cowin.gov.in/" target="blank"><button class="btn success">Covid-19  Vacination Certificate</button></a>
+      <a href="https://static.mygov.in/rest/s3fs-public/mygov_159340784951307401.pdf" target="blank"><button class="btn success">HelpLine Numbers</button></a>
+      <a href="https://static.mygov.in/rest/s3fs-public/mygov_161960430051307401.pdf" target="blank"><button class="btn success">Vacination Questions</button></a>
+      <a href="https://static.mygov.in/rest/s3fs-public/mygov_163108308853877021.pdf" target="blank"><button class="btn success">How to Apply For Vacination</button></a>
+      <a href="https://static.mygov.in/rest/s3fs-public/mygov_161960438951307401.pdf" target="blank"><button class="btn success">Do's and Don'ts</button></a>
+      <button onclick="document.getElementById('id01').style.display='block'"  class="btn success">Any Queries</button>
+      <div id="id01" class="modal">
+        <form class="modal-content animate" action="mailto:shanmuga2link@gmail.com" method="post">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="Avatar" class="avatar">
+          </div>
+          <div class="container">
+            <label for="uname"><b>Email</b></label>
+            <input type="text" placeholder="Enter your Email Id" name="Email" required>
+            <label for="psw"><b>Name</b></label>
+            <input type="text" placeholder="Enter your Name" name="Name" required>
+            <label for="psw"><b>Queries</b></label>
+            <textarea placeholder="Enter your Feedback or Suggestion or any Question" name="Queries" required></textarea> 
+            <button class="send" type="submit"><b>Send</b></button>
+          </div>
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn"><b>Cancel</b></button>
+          </div>
+        </form>
+      </div>
+      <script>
+      var modal = document.getElementById('id01');
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+      </script>
+</body>
+<body>
+      <hr>
+            <marquee>National Helpline Numbers: <a href="tel:011-23978046">011-23978046, 1075</a> || HelpLine Number of Each State --> Andhra Pradesh-<a href="tel:0866-2410978">0866-2410978</a>||Arunachal Pradesh-<a href="tel:104">104</a>||Assam-<a href="tel:104">104</a>||Bihar-<a href="tel:0612-2217681">0612-2217681</a>||Chhattisgarh-<a href="tel:0771-282113">0771-282113</a>||Goa-<a href="tel:104">104</a>||Gujarat-<a href="tel:079-23251900">079-23251900</a>||Haryana-<a href="tel:0172-2545938">0172-2545938</a>||Himachal Pradesh-<a href="tel:0177-2628940">0177-2628940</a>||Jharkhand-<a href="tel:104">104</a>||Karnataka-<a href="tel:104">104</a>||Kerala-<a href="tel:0471-2552056">0471-2552056</a>||Madhya Pradesh-<a href="tel:1075">1075</a>||Maharashtra-<a href="tel:022-22024535">022-22024535</a>||Manipur-<a href="tel:1800-345-3818">1800-345-3818</a>||Meghalaya-<a href="tel:108">108</a>||Mizoram-<a href="tel:102">102</a>||Nagaland-<a href="tel:0370-2291122">0370-2291122</a>||Odisha-<a href="tel:104">104</a>||Punjab-<a href="tel:104">104</a>||Rajasthan-<a href="tel:0141-2225000">0141-2225000</a>||Sikkim-<a href="tel:104">104</a>||Tamilnadu-<a href="tel:04429510500">044-29510500</a>||Telangana-<a href="tel:104">104</a>||Tripura-<a href="tel:0381-2315879">0381-2315879</a>||Uttarpradesh-<a href="tel:0522-2237515">0522-2237515</a>||Uttarakhand-<a href="tel:104">104</a>||Westbengal-<a href="tel:1800-313-444222">1800-313-444222</a>||Andaman and Nicobar Island-<a href="tel:03192-232102">03192-232102</a>||Chandigarh-<a href="tel:0172-2752038">0172-2752038</a>||Dadra Nagar Haveli,Daman and Diu - <a href="tel:104">104</a>||Delhi-<a href="tel:011-22307145">011-22307145</a>||Jammu and Kashmir-<a href="tel:0191-2549676">0191-2549676</a>||Ladakh-<a href="tel:01982-256462">01982-256462</a>||Lakshadweep-<a href="tel:104">104</a>||Puducherry-<a href="tel:104">104</a></marquee>
+      <hr>
       <div class="container-1">
             <div class="box1">
       <img src = "https://www.mapsofindia.com/images2/india-map.jpg" alt = "India" usemap = "#picture" />
@@ -182,10 +218,13 @@
       </script>
       <div class="box3">
       <p id="Result1" style="color: rgb(235, 103, 15);"></p>
-      <p id="Result2" style="color: rgb(235, 234, 236);"></p>
+      <p id="Result2" style="color: rgb(124, 117, 131);"></p>
       <p id="Result3" style="color: rgb(14, 155, 38);"></p>
       </div>
       </div>
 </div>
+<img src="note.jpeg" alt="Symptoms" width="50%" height="400">
+<img src="symptom.gif" alt="Symptoms" width="50%" height="810" align="right">
+<img src="prevention.jpg" alt="Prevention" width="50%" height="400">
 </body>
 </html>
