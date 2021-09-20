@@ -175,13 +175,13 @@ body{
     order: 1;
     justify-content: flex-end;
     position: relative;
-    left: 3%;
+    left: 2%;
 }
 .box2{
     flex: 1;
     order: 2;
     position: relative;
-    right: 3%;
+    right: 4%;
 }
 .box3{
     flex: 1;
