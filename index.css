@@ -147,7 +147,7 @@ marquee{
     color:rgb(238, 13, 13);
 }
 body{
-    background-color: white;
+    background-image: url('covid.jpg');
 }
 @media(min-width:100px){
 .container-1{
@@ -181,6 +181,7 @@ body{
     flex: 1;
     order: 2;
     position: relative;
+    background-color: #f1f1f1;
     right: 4%;
 }
 .box3{
